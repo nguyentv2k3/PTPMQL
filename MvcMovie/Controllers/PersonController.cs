@@ -4,6 +4,8 @@ using MvcMovie.Data;
 using MvcMovie.Models;
 using MvcMovie.Models.Process;
 using OfficeOpenXml;
+using X.PagedList;
+using X.PagedList.Extensions;
 
 namespace MvcMovie.Controllers
 {
@@ -15,9 +17,9 @@ namespace MvcMovie.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
-            var model = await _context.Person.ToListAsync();
+            var model = _context.Person.ToList().ToPagedList(page ?? 1, 5);
             return View(model);
         }
         public IActionResult Create()
