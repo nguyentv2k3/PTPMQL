@@ -448,3 +448,4 @@ D:\PTPMQL_NHOM02\MvcMovie\obj\Debug\net9.0\compressed\yfc7ypekbg-mlv21k5csn.gz
 D:\PTPMQL_NHOM02\MvcMovie\bin\Debug\net9.0\BouncyCastle.Cryptography.dll
 D:\PTPMQL_NHOM02\MvcMovie\bin\Debug\net9.0\MailKit.dll
 D:\PTPMQL_NHOM02\MvcMovie\bin\Debug\net9.0\MimeKit.dll
+D:\PTPMQL_NHOM02\MvcMovie\bin\Debug\net9.0\Bogus.dll

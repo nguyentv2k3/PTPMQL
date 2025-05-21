@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using MvcMovie.Models;
+using MvcMovie.Models.Entities;
+using MvcMovie.Models.Process;
 namespace MvcMovie.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -9,6 +11,8 @@ namespace MvcMovie.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         { }
         public DbSet<Person> Person { get; set; }
+        public DbSet<Employee> Employee { get; set; }
+
         // Thêm đoạn cấu hình OnModelCreating này
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
