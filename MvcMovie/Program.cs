@@ -13,6 +13,41 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 
 // Cấu hình Razor Pages + MVC
 builder.Services.AddControllersWithViews();
+builder.Services.Configure<IdentityOptions>(options =>
+    {
+        //default lockout setting
+        options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+        options.Lockout.MaxFailedAccessAttempts = 5;
+        options.Lockout.AllowedForNewUsers = true;
+
+        //config password
+        options.Password.RequireDigit = true;
+        options.Password.RequiredLength = 8;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireUppercase = true;
+        options.Password.RequireLowercase = false;
+
+        //config login
+        options.SignIn.RequireConfirmedEmail = false;
+        options.SignIn.RequireConfirmedPhoneNumber = false;
+
+        //config user
+        options.User.RequireUniqueEmail = true;
+    });
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    //chi gui cookie qua https
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    //giam thieu rui ro csrf
+    options.Cookie.SameSite = SameSiteMode.Lax;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    options.LoginPath = "/Account/Login";
+    options.AccessDeniedPath = "/Account/AccessDenied";
+    options.SlidingExpiration = true;
+
+});
+
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
