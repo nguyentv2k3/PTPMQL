@@ -26,6 +26,8 @@ builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("Role", policy => policy.RequireClaim("Role", "AdminOnly"));
     options.AddPolicy("Permission", policy => policy.RequireClaim("Role", "EmployeeOnly"));
+    options.AddPolicy("PolicyAdmin", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("PolicyEmployee", policy => policy.RequireRole("Employee"));
 });
 builder.Services.Configure<IdentityOptions>(options =>
     {
