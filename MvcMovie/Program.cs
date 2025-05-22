@@ -45,15 +45,16 @@ builder.Services.Configure<IdentityOptions>(options =>
     });
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.Cookie.HttpOnly = true;
+    //options.Cookie.HttpOnly = true;
     //chi gui cookie qua https
-    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    //options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
     //giam thieu rui ro csrf
-    options.Cookie.SameSite = SameSiteMode.Lax;
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
-    options.LoginPath = "/Account/Login";
-    options.AccessDeniedPath = "/Account/AccessDenied";
-    options.SlidingExpiration = true;
+    //options.Cookie.SameSite = SameSiteMode.Lax;
+    //options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    options.LoginPath = $"/Identity/Account/Login";
+    options.LogoutPath = $"/Idenity/Account/Logout";
+    options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+    //options.SlidingExpiration = true;
 
 });
 
