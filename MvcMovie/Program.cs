@@ -25,6 +25,12 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.S
 builder.Services.AddControllersWithViews();
 builder.Services.AddAuthorization(options =>
 {
+    foreach (var permission in Enum.GetValues(typeof(SystemPermissions)).Cast<SystemPermissions>())
+    {
+        options.AddPolicy(permission.ToString(), policy =>
+        policy.RequireClaim("Permission", permission.ToString()));
+    }
+    
     options.AddPolicy("Role", policy => policy.RequireClaim("Role", "AdminOnly"));
     options.AddPolicy("Permission", policy => policy.RequireClaim("Role", "EmployeeOnly"));
     options.AddPolicy("PolicyAdmin", policy => policy.RequireRole("Admin"));
