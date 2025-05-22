@@ -25,5 +25,6 @@ namespace MvcMovie.Data
             modelBuilder.Entity<IdentityUserToken<string>>().ToTable("UserTokens");
             modelBuilder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims");
         }
+        public DbSet<MvcMovie.Models.Entities.MemberUnit> MemberUnit { get; set; } = default!;
     }
 }

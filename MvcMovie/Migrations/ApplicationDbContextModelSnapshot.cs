@@ -92,11 +92,9 @@ namespace MvcMovie.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ProviderDisplayName")
@@ -134,11 +132,9 @@ namespace MvcMovie.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Value")
@@ -252,6 +248,33 @@ namespace MvcMovie.Migrations
                     b.HasKey("EmployeeId");
 
                     b.ToTable("Employee");
+                });
+
+            modelBuilder.Entity("MvcMovie.Models.Entities.MemberUnit", b =>
+                {
+                    b.Property<int>("MemberUnitId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Websiteurl")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("MemberUnitId");
+
+                    b.ToTable("MemberUnit");
                 });
 
             modelBuilder.Entity("MvcMovie.Models.Person", b =>
