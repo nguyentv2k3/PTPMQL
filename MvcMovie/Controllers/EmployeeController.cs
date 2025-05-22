@@ -25,12 +25,14 @@ namespace MvcMovie.Controllers
         }
 
         // GET: Employee
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Employee.ToListAsync());
         }
 
         // GET: Employee/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -49,6 +51,7 @@ namespace MvcMovie.Controllers
         }
 
         // GET: Employee/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
