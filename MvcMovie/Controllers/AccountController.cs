@@ -4,11 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using MvcMovie.Models;
 using MvcMovie.Models.ViewModels;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace MvcMovie.Controllers
 
 {
+    [Authorize(Policy = "PolicyByPhoneNumber")]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using MvcMovie.Models;
 using MvcMovie.Models.Process;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Authorization;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,7 +29,9 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("Permission", policy => policy.RequireClaim("Role", "EmployeeOnly"));
     options.AddPolicy("PolicyAdmin", policy => policy.RequireRole("Admin"));
     options.AddPolicy("PolicyEmployee", policy => policy.RequireRole("Employee"));
+    options.AddPolicy("PolicyByPhoneNumber", policy => policy.Requirements.Add(new PolicyByPhoneNumberRequirement()));
 });
+builder.Services.AddSingleton<IAuthorizationHandler, PolicyByPhoneNumberHandle>();
 builder.Services.Configure<IdentityOptions>(options =>
     {
         //default lockout setting
