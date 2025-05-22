@@ -22,6 +22,11 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.S
 
 // Cấu hình Razor Pages + MVC
 builder.Services.AddControllersWithViews();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Role", policy => policy.RequireClaim("Role", "AdminOnly"));
+    options.AddPolicy("Permission", policy => policy.RequireClaim("Role", "EmployeeOnly"));
+});
 builder.Services.Configure<IdentityOptions>(options =>
     {
         //default lockout setting
