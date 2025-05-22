@@ -16,7 +16,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
  options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")
  ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")));
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddRazorPages();
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
 // Cấu hình Razor Pages + MVC
@@ -56,7 +57,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 });
 
-builder.Services.AddRazorPages();
+
+
 
 builder.Services.AddTransient<EmployeeSeeder>();
 
