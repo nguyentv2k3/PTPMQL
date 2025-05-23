@@ -1,0 +1,6 @@
+a.selector:pseudo-class {
+  property: value;
+}
+a.highlight:hover {
+  color: #ff0000;
+}
