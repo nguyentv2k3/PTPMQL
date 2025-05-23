@@ -2,8 +2,10 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace Baithuchanh.Models
 {
+    [Table("DaiLy")]
     public class DaiLy
     {
+        [Key]
         public string MaDaiLy { get; set; }
 
         public string TenDaiLy { get; set; }
@@ -13,7 +15,7 @@ namespace Baithuchanh.Models
         public string NguoiDaiDien { get; set; }
 
         public string DienThoai { get; set; }
-     // Foreign Key - mã hệ thống phân phối mà đại lý này thuộc về
+        // Foreign Key - mã hệ thống phân phối mà đại lý này thuộc về
         public string MaHTPP { get; set; }
 
         // Navigation property - tham chiếu đến hệ thống phân phối
